@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Designer profissional para thumbnails, imagens em geral, sites, jogos e projetos personalizados. Encomendas pelo Instagram, com início do trabalho somente após pagamento." />
+  <title>Designer Jovem | Design, Sites, Jogos e Encomendas Personalizadas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #08090d;
+      --ink: #f7f4e8;
+      --muted: #bdb7a5;
+      --line: rgba(247, 244, 232, 0.16);
+      --panel: rgba(255, 255, 255, 0.075);
+      --hot: #ff3d00;
+      --gold: #ffd166;
+      --cyan: #20e3ff;
+      --green: #a7ff4f;
+      --shadow: 0 28px 80px rgba(0, 0, 0, 0.42);
+      --radius: 28px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(255, 61, 0, 0.35), transparent 28rem),
+        radial-gradient(circle at 90% 16%, rgba(32, 227, 255, 0.22), transparent 28rem),
+        radial-gradient(circle at 55% 82%, rgba(167, 255, 79, 0.12), transparent 25rem),
+        linear-gradient(135deg, #08090d 0%, #10121b 48%, #050507 100%);
+      font-family: "Manrope", sans-serif;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      opacity: 0.36;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: radial-gradient(circle at center, black 0 58%, transparent 82%);
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.84' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.42'/%3E%3C/svg%3E");
+      mix-blend-mode: soft-light;
+      opacity: 0.42;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrap {
+      width: min(1160px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 14px;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 14px 12px 18px;
+      margin-top: 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(8, 9, 13, 0.72);
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.24);
+      backdrop-filter: blur(18px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      color: #090a0e;
+      background: conic-gradient(from 180deg, var(--gold), var(--hot), var(--cyan), var(--green), var(--gold));
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 23px;
+      box-shadow: 0 0 36px rgba(255, 209, 102, 0.24);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .nav-links a {
+      padding: 9px 12px;
+      border-radius: 999px;
+      transition: 180ms ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .mini-cta {
+      padding: 10px 15px;
+      border-radius: 999px;
+      color: #090a0e;
+      background: var(--gold);
+      font-weight: 900;
+      box-shadow: 0 12px 34px rgba(255, 209, 102, 0.22);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .mini-cta:hover,
+    .main-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 46px rgba(255, 61, 0, 0.32);
+    }
+
+    .hero {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 34px;
+      align-items: center;
+      padding: 86px 0 54px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 13px;
+      margin-bottom: 22px;
+      border: 1px solid rgba(255, 209, 102, 0.35);
+      border-radius: 999px;
+      color: var(--gold);
+      background: rgba(255, 209, 102, 0.08);
+      font-size: 0.82rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .pulse {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 0 rgba(167, 255, 79, 0.62);
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      70% { box-shadow: 0 0 0 12px rgba(167, 255, 79, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(167, 255, 79, 0); }
+    }
+
+    h1 {
+      max-width: 780px;
+      margin: 0;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: clamp(4.6rem, 11vw, 9.4rem);
+      line-height: 0.82;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+    }
+
+    .stroke {
+      display: block;
+      color: transparent;
+      -webkit-text-stroke: 1.4px rgba(247, 244, 232, 0.72);
+      text-shadow: none;
+    }
+
+    .gradient-word {
+      display: inline-block;
+      color: transparent;
+      background: linear-gradient(90deg, var(--gold), var(--hot) 42%, var(--cyan));
+      -webkit-background-clip: text;
+      background-clip: text;
+      filter: drop-shadow(0 16px 38px rgba(255, 61, 0, 0.2));
+    }
+
+    .lead {
+      max-width: 620px;
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 2vw, 1.24rem);
+      line-height: 1.7;
+    }
+
+    .lead strong {
+      color: var(--ink);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      margin-top: 31px;
+    }
+
+    .main-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      min-height: 58px;
+      padding: 17px 24px;
+      border: 0;
+      border-radius: 18px;
+      color: #090a0e;
+      background: linear-gradient(135deg, var(--gold), #ff8b2c 52%, var(--hot));
+      box-shadow: 0 18px 48px rgba(255, 61, 0, 0.26);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .main-cta span {
+      font-size: 1.25rem;
+      transition: transform 180ms ease;
+    }
+
+    .main-cta:hover span {
+      transform: translateX(3px);
+    }
+
+    .payment-note {
+      max-width: 290px;
+      color: var(--gold);
+      font-size: 0.9rem;
+      font-weight: 900;
+      line-height: 1.45;
+    }
+
+    .hero-card {
+      position: relative;
+      min-height: 530px;
+      border: 1px solid var(--line);
+      border-radius: 36px;
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.04)),
+        radial-gradient(circle at 20% 20%, rgba(255, 209, 102, 0.23), transparent 16rem),
+        radial-gradient(circle at 80% 70%, rgba(32, 227, 255, 0.15), transparent 16rem);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transform: rotate(1.5deg);
+      animation: float-card 7s ease-in-out infinite;
+    }
+
+    @keyframes float-card {
+      0%, 100% { transform: rotate(1.5deg) translateY(0); }
+      50% { transform: rotate(-0.5deg) translateY(-12px); }
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 22px;
+      border: 1px dashed rgba(247, 244, 232, 0.22);
+      border-radius: 26px;
+    }
+
+    .thumb-preview {
+      position: absolute;
+      top: 42px;
+      left: 34px;
+      right: 34px;
+      height: 250px;
+      border-radius: 26px;
+      background:
+        linear-gradient(120deg, rgba(255, 61, 0, 0.9), rgba(255, 209, 102, 0.86)),
+        radial-gradient(circle at 70% 20%, white, transparent 8rem);
+      box-shadow: 0 24px 65px rgba(0, 0, 0, 0.36);
+      overflow: hidden;
+    }
+
+    .thumb-preview::before {
+      content: "THUMBNAILS";
+      position: absolute;
+      left: -8px;
+      bottom: 10px;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: clamp(4rem, 8vw, 6.7rem);
+      line-height: 0.8;
+      color: #0a0b0d;
+      letter-spacing: -0.04em;
+    }
+
+    .thumb-preview::after {
+      content: "";
+      position: absolute;
+      top: 28px;
+      right: 32px;
+      width: 126px;
+      height: 126px;
+      border: 14px solid rgba(10, 11, 13, 0.96);
+      border-left-color: transparent;
+      border-bottom-color: transparent;
+      border-radius: 50%;
+      transform: rotate(18deg);
+    }
+
+    .floating-tag {
+      position: absolute;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 999px;
+      background: rgba(5, 5, 7, 0.78);
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.28);
+      backdrop-filter: blur(14px);
+      color: var(--ink);
+      font-size: 0.86rem;
+      font-weight: 900;
+    }
+
+    .tag-one {
+      top: 264px;
+      right: 20px;
+    }
+
+    .tag-two {
+      top: 326px;
+      left: 22px;
+      color: #07100c;
+      background: var(--green);
+    }
+
+    .code-block {
+      position: absolute;
+      left: 36px;
+      right: 36px;
+      bottom: 34px;
+      padding: 20px;
+      border: 1px solid rgba(32, 227, 255, 0.22);
+      border-radius: 24px;
+      background: rgba(4, 10, 17, 0.78);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+      color: #d8fbff;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.88rem;
+      line-height: 1.8;
+    }
+
+    .code-block b {
+      color: var(--gold);
+      font-weight: 800;
+    }
+
+    .section {
+      padding: 58px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 22px;
+      margin-bottom: 24px;
+    }
+
+    .kicker {
+      margin: 0 0 10px;
+      color: var(--cyan);
+      font-size: 0.84rem;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: clamp(3rem, 7vw, 5.8rem);
+      line-height: 0.9;
+      letter-spacing: -0.025em;
+      text-transform: uppercase;
+    }
+
+    .section-text {
+      max-width: 430px;
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+      font-weight: 600;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .service {
+      position: relative;
+      min-height: 270px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      transition: transform 220ms ease, border-color 220ms ease, background 220ms ease;
+    }
+
+    .service:hover {
+      transform: translateY(-7px);
+      border-color: rgba(255, 209, 102, 0.42);
+      background: rgba(255, 255, 255, 0.105);
+    }
+
+    .service::after {
+      content: attr(data-number);
+      position: absolute;
+      right: 18px;
+      bottom: -12px;
+      color: rgba(247, 244, 232, 0.06);
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 8rem;
+      line-height: 1;
+    }
+
+    .icon {
+      display: grid;
+      place-items: center;
+      width: 56px;
+      height: 56px;
+      margin-bottom: 34px;
+      border-radius: 20px;
+      color: #07080b;
+      background: var(--gold);
+      font-size: 1.55rem;
+      font-weight: 900;
+      transform: rotate(-4deg);
+    }
+
+    .service:nth-child(2) .icon {
+      background: var(--cyan);
+      transform: rotate(4deg);
+    }
+
+    .service:nth-child(3) .icon {
+      background: var(--green);
+    }
+
+    .service h3 {
+      position: relative;
+      z-index: 1;
+      margin: 0 0 12px;
+      font-size: 1.35rem;
+      letter-spacing: -0.04em;
+    }
+
+    .service p {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .banner {
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 18px;
+      align-items: stretch;
+      margin-top: 16px;
+    }
+
+    .payment-box,
+    .process-box {
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .payment-box {
+      min-height: 370px;
+      padding: 30px;
+      background:
+        linear-gradient(145deg, rgba(255, 61, 0, 0.94), rgba(255, 209, 102, 0.88)),
+        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.48), transparent 11rem);
+      color: #08090d;
+    }
+
+    .payment-box .label {
+      display: inline-flex;
+      padding: 9px 12px;
+      border: 1px solid rgba(8, 9, 13, 0.18);
+      border-radius: 999px;
+      background: rgba(8, 9, 13, 0.08);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .payment-box h2 {
+      margin-top: 40px;
+      color: #08090d;
+      font-size: clamp(3.4rem, 7vw, 6.8rem);
+    }
+
+    .payment-box p {
+      max-width: 500px;
+      margin: 18px 0 0;
+      font-size: 1.05rem;
+      font-weight: 800;
+      line-height: 1.58;
+    }
+
+    .process-box {
+      display: grid;
+      gap: 0;
+      background: rgba(255, 255, 255, 0.065);
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 18px;
+      padding: 28px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .step:last-child {
+      border-bottom: 0;
+    }
+
+    .step-number {
+      display: grid;
+      place-items: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      color: #08090d;
+      background: var(--ink);
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 2rem;
+    }
+
+    .step h3 {
+      margin: 0 0 6px;
+      font-size: 1.12rem;
+      letter-spacing: -0.03em;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .final-cta {
+      position: relative;
+      margin: 56px 0 24px;
+      padding: 34px;
+      border: 1px solid rgba(255, 209, 102, 0.26);
+      border-radius: 38px;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.035)),
+        radial-gradient(circle at 10% 30%, rgba(255, 61, 0, 0.2), transparent 19rem),
+        radial-gradient(circle at 88% 38%, rgba(32, 227, 255, 0.15), transparent 20rem);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .final-cta::before {
+      content: "";
+      position: absolute;
+      inset: auto -12% -44% 40%;
+      height: 180px;
+      background: linear-gradient(90deg, transparent, rgba(255, 209, 102, 0.18), transparent);
+      transform: rotate(-8deg);
+    }
+
+    .final-cta-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .final-cta h2 {
+      max-width: 720px;
+    }
+
+    .final-cta p {
+      max-width: 670px;
+      margin: 14px 0 0;
+      color: var(--muted);
+      line-height: 1.65;
+      font-weight: 700;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 34px 0 44px;
+      color: rgba(247, 244, 232, 0.62);
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      animation: reveal 720ms ease forwards;
+    }
+
+    .delay-1 { animation-delay: 110ms; }
+    .delay-2 { animation-delay: 210ms; }
+    .delay-3 { animation-delay: 320ms; }
+
+    @keyframes reveal {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 930px) {
+      .hero,
+      .banner,
+      .final-cta-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 60px;
+      }
+
+      .hero-card {
+        min-height: 500px;
+        transform: none;
+        animation: none;
+      }
+
+      .services {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-text {
+        margin-top: 14px;
+      }
+
+      .final-cta-grid .main-cta {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 690px) {
+      .wrap {
+        width: min(100% - 24px, 1160px);
+      }
+
+      .nav {
+        align-items: flex-start;
+        border-radius: 24px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .mini-cta {
+        display: none;
+      }
+
+      h1 {
+        font-size: clamp(4.2rem, 21vw, 6.2rem);
+      }
+
+      .hero-card {
+        min-height: 450px;
+        border-radius: 28px;
+      }
+
+      .thumb-preview {
+        left: 22px;
+        right: 22px;
+        top: 28px;
+        height: 214px;
+      }
+
+      .thumb-preview::before {
+        font-size: 4.2rem;
+      }
+
+      .floating-tag {
+        font-size: 0.78rem;
+      }
+
+      .tag-one {
+        top: 235px;
+      }
+
+      .tag-two {
+        top: 292px;
+      }
+
+      .code-block {
+        left: 22px;
+        right: 22px;
+        bottom: 24px;
+        font-size: 0.74rem;
+      }
+
+      .payment-box,
+      .final-cta {
+        padding: 24px;
+        border-radius: 28px;
+      }
+
+      .step {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap nav" aria-label="Navegação principal">
+    <a class="brand" href="#top" aria-label="Início">
+      <span class="brand-mark">DJ</span>
+      <span>Designer Jovem</span>
+    </a>
+    <nav class="nav-links" aria-label="Seções do site">
+      <a href="#servicos">Serviços</a>
+      <a href="#pagamento">Pagamento</a>
+      <a href="#encomenda">Encomenda</a>
+    </nav>
+    <a class="mini-cta" href="https://www.instagram.com/desig_nerjovemoficial?igsh=MW85azN5YzNibDZobg==" target="_blank" rel="noopener noreferrer">Pedir no Instagram</a>
+  </header>
+
+  <main id="top">
+    <section class="wrap hero">
+      <div>
+        <div class="eyebrow reveal"><span class="pulse"></span> Design + programação sob encomenda</div>
+        <h1 class="reveal delay-1">
+          Seu projeto com
+          <span class="stroke">visual de impacto</span>
+          <span class="gradient-word">e código</span>
+        </h1>
+        <p class="lead reveal delay-2">
+          Criação de <strong>thumbnails profissionais</strong>, imagens em geral, artes para redes sociais,
+          sites, jogos, páginas personalizadas e muito mais. Você explica a ideia, eu transformo em algo pronto para chamar atenção.
+        </p>
+        <div class="hero-actions reveal delay-3">
+          <a class="main-cta" href="https://www.instagram.com/desig_nerjovemoficial?igsh=MW85azN5YzNibDZobg==" target="_blank" rel="noopener noreferrer">
+            Faça sua encomenda personalizada <span>→</span>
+          </a>
+          <div class="payment-note">Importante: o trabalho só será iniciado após a confirmação do pagamento.</div>
+        </div>
+      </div>
+
+      <aside class="hero-card reveal delay-2" aria-label="Prévia visual dos serviços">
+        <div class="thumb-preview"></div>
+        <div class="floating-tag tag-one">Imagens que vendem a ideia</div>
+        <div class="floating-tag tag-two">Sites • Jogos • Artes</div>
+        <div class="code-block" aria-hidden="true">
+          <b>&lt;serviços&gt;</b><br>
+          thumbnails profissionais<br>
+          imagens personalizadas<br>
+          sites, jogos e projetos digitais<br>
+          <b>&lt;/serviços&gt;</b>
+        </div>
+      </aside>
+    </section>
+
+    <section id="servicos" class="wrap section">
+      <div class="section-head">
+        <div>
+          <p class="kicker">O que você pode encomendar</p>
+          <h2>Serviços principais</h2>
+        </div>
+        <p class="section-text">
+          Cada pedido é conversado pelo Instagram para definir estilo, prazo, detalhes e valor antes do pagamento.
+        </p>
+      </div>
+
+      <div class="services">
+        <article class="service" data-number="01">
+          <div class="icon">D</div>
+          <h3>Designer profissional</h3>
+          <p>Criação de thumbnails, banners, capas, imagens para posts, identidade visual simples e artes em geral com foco em impacto visual.</p>
+        </article>
+        <article class="service" data-number="02">
+          <div class="icon">C</div>
+          <h3>Programação</h3>
+          <p>Construção de sites, páginas de divulgação, interfaces, jogos simples, experiências interativas e projetos digitais personalizados.</p>
+        </article>
+        <article class="service" data-number="03">
+          <div class="icon">+</div>
+          <h3>Muitos mais</h3>
+          <p>Tem uma ideia diferente? Envie sua proposta. Projetos criativos, melhorias em artes, ajustes visuais e pedidos especiais são avaliados.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="pagamento" class="wrap section">
+      <div class="banner">
+        <div class="payment-box">
+          <span class="label">Regra obrigatória</span>
+          <h2>Somente pós pagamento</h2>
+          <p>
+            Para garantir compromisso e organização, nenhum trabalho será iniciado antes da confirmação do pagamento combinado.
+            Após o pagamento, o pedido entra em produção conforme os detalhes definidos.
+          </p>
+        </div>
+
+        <div class="process-box" aria-label="Como funciona o pedido">
+          <div class="step">
+            <div class="step-number">1</div>
+            <div>
+              <h3>Você chama no Instagram</h3>
+              <p>Explique o que precisa: thumbnail, imagem, site, jogo ou outro projeto personalizado.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <div>
+              <h3>Definimos valor e detalhes</h3>
+              <p>Combinamos estilo, referências, conteúdo, prazo, formato de entrega e preço final.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <div>
+              <h3>Produção após pagamento</h3>
+              <p>O trabalho começa apenas depois da confirmação do pagamento. Essa regra fica clara antes do pedido.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="encomenda" class="wrap final-cta">
+      <div class="final-cta-grid">
+        <div>
+          <p class="kicker">Pronto para pedir?</p>
+          <h2>Faça sua encomenda personalizada</h2>
+          <p>
+            Clique no botão para ir direto ao Instagram oficial, enviar sua ideia e receber orientação sobre valor e próximos passos.
+            Lembre-se: o projeto só começa após o pagamento.
+          </p>
+        </div>
+        <a class="main-cta" href="https://www.instagram.com/desig_nerjovemoficial?igsh=MW85azN5YzNibDZobg==" target="_blank" rel="noopener noreferrer">
+          Faça sua encomenda personalizada <span>→</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap footer">
+    <span>© 2026 Designer Jovem. Serviços digitais sob encomenda.</span>
+    <span>Atendimento e orçamento pelo Instagram oficial.</span>
+  </footer>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"75124c326cb447fe934cde04713ae013","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
